@@ -1,0 +1,5 @@
+kitti_loader:
+  ros__parameters:
+    left_image_folder_path: /home/jw/workspace/src/stereo_depth_ros2/data.nosync/kitti/left
+    right_image_folder_path: /home/jw/workspace/src/stereo_depth_ros2/data.nosync/kitti/right
+    publish_rate_hz: 10.0
