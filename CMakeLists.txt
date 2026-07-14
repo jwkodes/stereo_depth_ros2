@@ -25,9 +25,15 @@ if(BUILD_TESTING)
 endif()
 
 find_package(OpenCV REQUIRED)
+
 add_executable(kitti_loader src/kitti_loader.cpp)
 ament_target_dependencies(kitti_loader rclcpp sensor_msgs cv_bridge image_transport)
 target_link_libraries(kitti_loader ${OpenCV_LIBS})
 install(TARGETS kitti_loader DESTINATION lib/${PROJECT_NAME})
+
+add_executable(stereo_depth_SGBM src/stereo_depth_SGBM.cpp)
+ament_target_dependencies(stereo_depth_SGBM rclcpp sensor_msgs cv_bridge image_transport message_filters)
+target_link_libraries(stereo_depth_SGBM ${OpenCV_LIBS})
+install(TARGETS stereo_depth_SGBM DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
