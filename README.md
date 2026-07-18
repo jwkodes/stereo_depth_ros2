@@ -1,6 +1,12 @@
 # stereo_depth_ros2
 
-ROS2 stereo depth pipeline: KITTI dataset loader, CPU stereo depth (OpenCV SGBM), and TensorRT inference nodes.
+A ROS2 stereo depth pipeline built around the KITTI stereo dataset.
+
+The pipeline is split into two nodes:
+- **`kitti_loader`** reads stereo image pairs from disk and publishes them as ROS2 image topics at a configurable rate, simulating a live stereo camera feed.
+- **`stereo_depth_SGBM`** subscribes to the left/right image topics, synchronises matching frame pairs, and runs OpenCV's Semi-Global Block Matching (SGBM) algorithm to compute a disparity map, which it publishes as a ROS2 image topic.
+
+This mirrors a typical real-time stereo depth setup: a camera driver (here, the KITTI loader standing in for one) feeds synchronised stereo frames to a depth estimation node, with each stage decoupled via ROS2 topics.
 
 ## Build
 
